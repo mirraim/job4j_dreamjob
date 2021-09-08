@@ -17,6 +17,7 @@ public class Store {
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
+    private final Map<Integer, String> images = new ConcurrentHashMap<>();
 
     private Store() {
         posts.put(1, new Post(1, "Junior Java Job"));
@@ -25,6 +26,9 @@ public class Store {
         candidates.put(1, new Candidate(1, "Junior Java"));
         candidates.put(2, new Candidate(2, "Middle Java"));
         candidates.put(3, new Candidate(3, "Senior Java"));
+        images.put(1, "/home/mirraim/images/default.png");
+        images.put(2, "/home/mirraim/images/default.png");
+        images.put(3, "/home/mirraim/images/default.png");
     }
 
     public static Store instOf() {
