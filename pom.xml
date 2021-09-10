@@ -18,6 +18,7 @@
   </properties>
 
   <dependencies>
+    <!-- SERVLET -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -29,6 +30,19 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+    <!-- DATABASE -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.9</version>
+    </dependency>
+    <!-- DB CONNECTION POOL -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+
   </dependencies>
 
 </project>
