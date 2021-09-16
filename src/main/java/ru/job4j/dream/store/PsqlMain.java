@@ -16,7 +16,7 @@ public class PsqlMain {
         }
         System.out.println("-------------------------");
         store.save(new Post(1, "Junior Java Job"));
-        Post post = store.findById(1);
+        Post post = store.findPostById(1);
         System.out.println(post.getId() + " " + post.getName());
     }
 }
