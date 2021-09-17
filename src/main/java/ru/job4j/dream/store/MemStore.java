@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MemStore implements Store{
-    private static final MemStore INST = new MemStore();
+    private static final Store INST = PsqlStore.instOf();
 
     private static AtomicInteger POST_ID = new AtomicInteger(4);
     private static AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
@@ -27,7 +27,7 @@ public class MemStore implements Store{
         candidates.put(3, new Candidate(3, "Senior Java"));
     }
 
-    public static MemStore instOf() {
+    public static Store instOf() {
         return INST;
     }
 
