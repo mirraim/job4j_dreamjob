@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class PostManager implements DBManager<Post>{
-    Connection cn;
+    private final Connection cn;
     private static final Logger LOG = LoggerFactory.getLogger(PostManager.class.getName());
 
     public PostManager(Connection cn) {

@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class CandidateManager implements DBManager<Candidate>{
-    Connection cn;
+    private final Connection cn;
     private static final Logger LOG = LoggerFactory.getLogger(CandidateManager.class.getName());
 
     public CandidateManager(Connection cn) {
