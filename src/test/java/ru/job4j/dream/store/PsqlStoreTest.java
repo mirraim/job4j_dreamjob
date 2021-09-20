@@ -1,5 +1,6 @@
 package ru.job4j.dream.store;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
@@ -10,6 +11,8 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 public class PsqlStoreTest {
+
+    @Ignore
     @Test
     public void whenCreateCandidate() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -20,6 +23,7 @@ public class PsqlStoreTest {
         assertEquals(store.findAllCandidates().size(), candidates.size());
     }
 
+    @Ignore
     @Test
     public void whenUpdateCandidate() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -32,6 +36,7 @@ public class PsqlStoreTest {
         assertEquals(store.findAllCandidates().size(), candidates.size());
     }
 
+    @Ignore
     @Test
     public void whenFindCandidate() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -45,12 +50,14 @@ public class PsqlStoreTest {
         );
     }
 
+    @Ignore
     @Test
     public void findWhenNoCandidate() throws SQLException {
         Store store = PsqlStore.instOf();
         assertNull(store.findCandidateById(-1));
     }
 
+    @Ignore
     @Test
     public void whenCreatePost() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -61,6 +68,7 @@ public class PsqlStoreTest {
         assertEquals(store.findAllPosts().size(), posts.size());
     }
 
+    @Ignore
     @Test
     public void whenUpdatePost() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -73,6 +81,7 @@ public class PsqlStoreTest {
         assertEquals(store.findAllPosts().size(), posts.size());
     }
 
+    @Ignore
     @Test
     public void whenFindPost() throws SQLException {
         Store store = PsqlStore.instOf();
@@ -86,6 +95,7 @@ public class PsqlStoreTest {
         );
     }
 
+    @Ignore
     @Test
     public void findWhenNoPost() throws SQLException {
         Store store = PsqlStore.instOf();
