@@ -77,7 +77,7 @@ public class PsqlStore implements Store {
     public Collection<User> findAllUsers() {
         Collection<User> users = new ArrayList<>();
         try(Connection cn = pool.getConnection()) {
-            DBManager<User> manager = new UserManager((cn));
+            UserManager manager = new UserManager((cn));
             users = manager.findAll();
         } catch (Exception e) {
             LOG.info("Unable to get connection", e);
@@ -108,7 +108,7 @@ public class PsqlStore implements Store {
     @Override
     public void save(User user) {
         try(Connection cn = pool.getConnection()) {
-            DBManager<User> manager = new UserManager(cn);
+            UserManager manager = new UserManager(cn);
             manager.save(user);
         } catch (Exception e) {
             LOG.info("Unable to get connection", e);
@@ -140,11 +140,11 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public User findUserById(int id) {
+    public User findUserByEmail(String email) {
         User user = null;
         try(Connection cn = pool.getConnection()) {
-            DBManager<User> manager = new UserManager(cn);
-            user =  manager.findById(id);
+            UserManager manager = new UserManager(cn);
+            user =  manager.findByEmail(email);
         } catch (Exception e) {
             LOG.info("Unable to get connection", e);
         }

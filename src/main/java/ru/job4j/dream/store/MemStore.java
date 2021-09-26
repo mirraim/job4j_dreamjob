@@ -77,7 +77,7 @@ public class MemStore implements Store{
     }
 
     @Override
-    public User findUserById(int id) {
+    public User findUserByEmail(String email) {
         return null;
     }
 }

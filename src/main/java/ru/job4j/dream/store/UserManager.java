@@ -2,7 +2,6 @@ package ru.job4j.dream.store;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.User;
 
 import java.sql.Connection;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class UserManager implements DBManager<User> {
+public class UserManager{
     private final Connection cn;
     private static final Logger LOG = LoggerFactory.getLogger(PostManager.class.getName());
 
@@ -20,7 +19,6 @@ public class UserManager implements DBManager<User> {
         this.cn = cn;
     }
 
-    @Override
     public Collection<User> findAll() {
         List<User> posts = new ArrayList<>();
         try (PreparedStatement ps = cn.prepareStatement(
@@ -42,7 +40,6 @@ public class UserManager implements DBManager<User> {
         return posts;
     }
 
-    @Override
     public void save(User user) {
         if (user.getId() == 0) {
             create(user);
@@ -84,13 +81,12 @@ public class UserManager implements DBManager<User> {
             LOG.info("Unable to update User", e);
         }
     }
-    @Override
-    public User findById(int id) {
+   public User findByEmail(String email) {
         User user = null;
         try (PreparedStatement ps = cn.prepareStatement(
-                "SELECT * from users WHERE id=?"
+                "SELECT * from users WHERE email=?"
         )) {
-            ps.setInt(1, id);
+            ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()){
                 if (rs.next()){
                     user = new User(

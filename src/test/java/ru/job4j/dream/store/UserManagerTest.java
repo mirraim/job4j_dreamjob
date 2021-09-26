@@ -63,47 +63,21 @@ public class UserManagerTest {
             assertEquals(manager.findAll().size(), users.size());
         }
     }
-
     @Ignore
     @Test
-    public void whenUpdateSameName() throws SQLException {
+    public void findWhenUpdate() throws SQLException {
         try (Connection connection = this.init()) {
             UserManager manager = new UserManager(ConnectionRollback.create(connection));
             User user = new User(0, "Mary", "mary@mail.ru", "mary");
             manager.save(user);
             User user1 = new User(user.getId(), "Sam", "sam@mail.ru", "sam");
             manager.save(user1);
-            assertEquals("Sam", manager.findById(user.getId()).getName());
+            int rsl = manager.findByEmail("sam@mail.ru").getId();
+            int expected = user.getId();
+            assertEquals(expected, rsl);
         }
     }
 
-    @Ignore
-    @Test
-    public void findWhenUpdateSameEmail() throws SQLException {
-        try (Connection connection = this.init()) {
-            UserManager manager = new UserManager(ConnectionRollback.create(connection));
-            User user = new User(0, "Mary", "mary@mail.ru", "mary");
-            manager.save(user);
-            User user1 = new User(user.getId(), "Sam", "sam@mail.ru", "sam");
-            manager.save(user1);
-            String rsl = manager.findById(user.getId()).getEmail();
-            assertEquals("sam@mail.ru", rsl);
-        }
-    }
-
-    @Ignore
-    @Test
-    public void findWhenUpdateSamePassword() throws SQLException {
-        try (Connection connection = this.init()) {
-            UserManager manager = new UserManager(ConnectionRollback.create(connection));
-            User user = new User(0, "Mary", "mary@mail.ru", "mary");
-            manager.save(user);
-            User user1 = new User(user.getId(), "Sam", "sam@mail.ru", "sam");
-            manager.save(user1);
-            String rsl = manager.findById(user.getId()).getPassword();
-            assertEquals("sam", rsl);
-        }
-    }
 
     @Ignore
     @Test
@@ -112,7 +86,7 @@ public class UserManagerTest {
             UserManager manager = new UserManager(ConnectionRollback.create(connection));
             User user = new User(0, "Mary", "mary@mail.ru", "mary");
             manager.save(user);
-            assertNull(manager.findById(-1));
+            assertNull(manager.findByEmail("some@email"));
         }
     }
 }
