@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
+import ru.job4j.dream.model.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -73,6 +74,18 @@ public class PsqlStore implements Store {
     }
 
     @Override
+    public Collection<User> findAllUsers() {
+        Collection<User> users = new ArrayList<>();
+        try(Connection cn = pool.getConnection()) {
+            DBManager<User> manager = new UserManager((cn));
+            users = manager.findAll();
+        } catch (Exception e) {
+            LOG.info("Unable to get connection", e);
+        }
+        return users;
+    }
+
+    @Override
     public void save(Post post) {
         try(Connection cn = pool.getConnection()) {
             DBManager<Post> manager = new PostManager(cn);
@@ -87,6 +100,16 @@ public class PsqlStore implements Store {
         try(Connection cn = pool.getConnection()) {
             DBManager<Candidate> manager = new CandidateManager(cn);
             manager.save(candidate);
+        } catch (Exception e) {
+            LOG.info("Unable to get connection", e);
+        }
+    }
+
+    @Override
+    public void save(User user) {
+        try(Connection cn = pool.getConnection()) {
+            DBManager<User> manager = new UserManager(cn);
+            manager.save(user);
         } catch (Exception e) {
             LOG.info("Unable to get connection", e);
         }
@@ -114,5 +137,17 @@ public class PsqlStore implements Store {
             LOG.info("Unable to get connection", e);
         }
         return candidate;
+    }
+
+    @Override
+    public User findUserById(int id) {
+        User user = null;
+        try(Connection cn = pool.getConnection()) {
+            DBManager<User> manager = new UserManager(cn);
+            user =  manager.findById(id);
+        } catch (Exception e) {
+            LOG.info("Unable to get connection", e);
+        }
+        return user;
     }
 }
