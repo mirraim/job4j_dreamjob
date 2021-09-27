@@ -1,13 +1,8 @@
 drop table post;
 drop table candidate;
+drop table users;
 
 CREATE TABLE post
-(
-    id   SERIAL PRIMARY KEY,
-    name TEXT
-);
-
-CREATE TABLE candidate
 (
     id   SERIAL PRIMARY KEY,
     name TEXT
