@@ -74,18 +74,6 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public Collection<User> findAllUsers() {
-        Collection<User> users = new ArrayList<>();
-        try(Connection cn = pool.getConnection()) {
-            UserManager manager = new UserManager((cn));
-            users = manager.findAll();
-        } catch (Exception e) {
-            LOG.info("Unable to get connection", e);
-        }
-        return users;
-    }
-
-    @Override
     public void save(Post post) {
         try(Connection cn = pool.getConnection()) {
             DBManager<Post> manager = new PostManager(cn);

@@ -9,7 +9,6 @@ import java.util.Collection;
 public interface Store {
     Collection<Post> findAllPosts();
     Collection<Candidate> findAllCandidates();
-    Collection<User> findAllUsers();
 
     void save(Post post);
     void save(Candidate candidate);

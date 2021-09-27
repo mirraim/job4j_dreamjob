@@ -67,11 +67,6 @@ public class MemStore implements Store{
     }
 
     @Override
-    public Collection<User> findAllUsers() {
-        return null;
-    }
-
-    @Override
     public void save(User user) {
 
     }
