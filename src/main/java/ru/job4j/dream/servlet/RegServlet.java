@@ -16,10 +16,16 @@ public class RegServlet extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        User user = new User(0, name, email, password);
-        PsqlStore.instOf().save(user);
-        HttpSession sc = req.getSession();
-        sc.setAttribute("user", user);
-        resp.sendRedirect(req.getContextPath() + "/posts.do");
+        User user = PsqlStore.instOf().findUserByEmail(email);
+        if (user == null) {
+            user = new User(0, name, email, password);
+            PsqlStore.instOf().save(user);
+            HttpSession sc = req.getSession();
+            sc.setAttribute("user", user);
+            resp.sendRedirect(req.getContextPath() + "/posts.do");
+        } else {
+            req.setAttribute("error", "Пользователь с таким email уже существует");
+            req.getRequestDispatcher("reg.jsp").forward(req, resp);
+        }
     }
 }

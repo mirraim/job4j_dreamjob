@@ -68,7 +68,7 @@
                     <button type="submit" class="btn btn-primary">Регистрация</button>
                     <c:if test="${not empty error}">
                         <div style="color:red; font-weight: bold; margin: 30px 0;">
-                                ${error} нужно заменить на <c:out value="${error}"/>
+                                <c:out value="${error}"/>
                         </div>
                     </c:if>
                 </form>
