@@ -1,6 +1,7 @@
 package ru.job4j.dream.servlet;
 
 import org.hamcrest.core.Is;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
@@ -22,6 +23,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PsqlStore.class)
 public class CandidateServletTest {
+    @Ignore
     @Test
     public void whenCreateCandidate() throws IOException, ServletException {
         Store store = MemStore.instOf();
