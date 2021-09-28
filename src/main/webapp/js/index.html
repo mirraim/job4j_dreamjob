@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Регистрация</h1>
+</div>
+<form>
+    <div class="form-group row">
+        <label class="col-sm-1 col-form-label" style="padding-left: 20pt">Имя</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control form-control-lg">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-1 col-form-label" style="padding-left: 20pt">Фамилия</label>
+        <div class="col-sm-4">
+        <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row" >
+        <label class="col-sm-1 col-form-label" style="padding-left: 20pt">Пол</label>
+        <div class="col-sm-4">
+        <select class="custom-select custom-select-lg mb-5">
+            <option selected>...</option>
+            <option value="1">М</option>
+            <option value="2">Ж</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-1 col-form-label" style="padding-left: 20pt">Описание</label>
+        <div class="col-sm-4">
+        <textarea class="form-control" id="Textarea" rows="3"></textarea>
+        </div>
+    </div>
+</form>
+<div class="col-sm-8" style="padding-left: 20pt">
+<table class="table table-hover" >
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Пол</th>
+        <th scope="col">Описание</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Tven</td>
+        <td>М</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>М</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Jane</td>
+        <td>Smyth</td>
+        <td>Ж</td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
