@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -23,9 +23,17 @@
             } else if (dv === '') {
                 alert('Заполните описание')
             }
+
+            $('#table tr:last').after('<tr>'
+                + '<td>' + nv +'</td>'
+                + '<td>' + snv +'</td>'
+                + '<td>' + gv +'</td>'
+                + '<td>' + dv +'</td>'
+                + '</tr>');
             return false;
         }
     </script>
+
 </head>
 <body>
 <div class="container-fluid">
@@ -49,8 +57,8 @@
         <div class="col-sm-4">
         <select class="custom-select custom-select-lg mb-5" id="gender">
             <option selected>...</option>
-            <option value="1">М</option>
-            <option value="2">Ж</option>
+            <option value="M">М</option>
+            <option value="Ж">Ж</option>
         </select>
         </div>
     </div>
@@ -63,10 +71,9 @@
     <button type="button" class="btn btn-default" onclick="return validate();">Submit</button>
 </form>
 <div class="col-sm-8" style="padding-left: 20pt">
-<table class="table table-hover" >
+<table id="table" class="table table-hover" >
     <thead>
     <tr>
-        <th scope="col">#</th>
         <th scope="col">Имя</th>
         <th scope="col">Фамилия</th>
         <th scope="col">Пол</th>
@@ -75,21 +82,18 @@
     </thead>
     <tbody>
     <tr>
-        <th scope="row">1</th>
         <td>Mark</td>
         <td>Tven</td>
         <td>М</td>
         <td></td>
     </tr>
     <tr>
-        <th scope="row">2</th>
         <td>Jacob</td>
         <td>Thornton</td>
         <td>М</td>
         <td></td>
     </tr>
     <tr>
-        <th scope="row">3</th>
         <td>Jane</td>
         <td>Smyth</td>
         <td>Ж</td>
